@@ -24,11 +24,17 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add("Search", () => {
+Cypress.Commands.add("SelectCountryAndCity", () => {
   cy.findByRole("combobox", { name: /Country/i }).select("Poland");
   cy.findByRole("combobox", { name: /City/i }).select("Cracow");
+});
+
+Cypress.Commands.add("SearchAndSelectCar", () => {
+  cy.SelectCountryAndCity();
   cy.get("#pickup").type("2023-06-06");
   cy.get("#dropoff").type("2023-06-07");
   cy.findByRole("button", { name: /Search/i }).click();
   cy.get(".btn").contains("Rent").first().should("exist");
+  cy.get(".btn").contains("Rent").first().click();
+  cy.get(".btn").contains("Rent!").should("exist").click();
 });
