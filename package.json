@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "test": "cucumber-js"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^8.10.0",
+    "@testing-library/cypress": "^9.0.0",
+    "cypress": "^12.5.0",
+    "prettier": "2.8.3"
+  }
+}
